@@ -1,0 +1,223 @@
+ERROR - 2026-01-21 03:11:32 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db-ekatalog-ci4', 3306, '', 0)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelBuku.php(59): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Home.php(27): App\Models\ModelBuku->BukuBaru()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelBuku.php(59): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Home.php(27): App\Models\ModelBuku->BukuBaru()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-01-21 03:11:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_buku`
+LEFT JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_buku`.`id_kategori`
+LEFT JOIN `tbl_penerbit` ON `tbl_penerbit`.`id_penerbit` = `tbl_buku`.`id_penerbit`
+LEFT JOIN `tbl_pengarang` ON `tbl_pengarang`.`id_pengarang` = `tbl_buku`.`id_pengarang`
+LEFT JOIN `tbl_rak` ON `tbl_rak`.`id_rak` = `tbl_buku`.`id_rak`
+ORDER BY `judul_buku` ASC
+ LIMIT 6', [], false)
+ 3 APPPATH\Models\ModelBuku.php(59): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(27): App\Models\ModelBuku->BukuBaru()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2026-01-21 03:15:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:15:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:15:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:15:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:15:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:15:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:17:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:17:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:18:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:18:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:18:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:18:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 03:18:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-21 04:38:23 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db-ekatalog-ci4', 3306, '', 0)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelBuku.php(17): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Home.php(57): App\Models\ModelBuku->AllData()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Home->GaleriBuku()
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelBuku.php(17): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Home.php(57): App\Models\ModelBuku->AllData()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Home->GaleriBuku()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-01-21 04:38:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: Home/GaleriBuku]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_buku`
+LEFT JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_buku`.`id_kategori`
+LEFT JOIN `tbl_penerbit` ON `tbl_penerbit`.`id_penerbit` = `tbl_buku`.`id_penerbit`
+LEFT JOIN `tbl_pengarang` ON `tbl_pengarang`.`id_pengarang` = `tbl_buku`.`id_pengarang`
+LEFT JOIN `tbl_rak` ON `tbl_rak`.`id_rak` = `tbl_buku`.`id_rak`
+ORDER BY `judul_buku` ASC', [], false)
+ 3 APPPATH\Models\ModelBuku.php(17): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(57): App\Models\ModelBuku->AllData()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->GaleriBuku()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-01-21 04:40:12 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db-ekatalog-ci4', 3306, '', 0)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelBuku.php(17): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Home.php(57): App\Models\ModelBuku->AllData()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Home->GaleriBuku()
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelBuku.php(17): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Home.php(57): App\Models\ModelBuku->AllData()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Home->GaleriBuku()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-01-21 04:40:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: Home/GaleriBuku]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_buku`
+LEFT JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_buku`.`id_kategori`
+LEFT JOIN `tbl_penerbit` ON `tbl_penerbit`.`id_penerbit` = `tbl_buku`.`id_penerbit`
+LEFT JOIN `tbl_pengarang` ON `tbl_pengarang`.`id_pengarang` = `tbl_buku`.`id_pengarang`
+LEFT JOIN `tbl_rak` ON `tbl_rak`.`id_rak` = `tbl_buku`.`id_rak`
+ORDER BY `judul_buku` ASC', [], false)
+ 3 APPPATH\Models\ModelBuku.php(17): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(57): App\Models\ModelBuku->AllData()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->GaleriBuku()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-01-21 04:40:21 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db-ekatalog-ci4', 3306, '', 0)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelEbook.php(16): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Home.php(66): App\Models\ModelEbook->AllData()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Home->GaleriEbook()
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelEbook.php(16): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Home.php(66): App\Models\ModelEbook->AllData()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Home->GaleriEbook()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-01-21 04:40:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: Home/GaleriEbook]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_ebook`
+LEFT JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_ebook`.`id_kategori`
+LEFT JOIN `tbl_penerbit` ON `tbl_penerbit`.`id_penerbit` = `tbl_ebook`.`id_penerbit`
+LEFT JOIN `tbl_pengarang` ON `tbl_pengarang`.`id_pengarang` = `tbl_ebook`.`id_pengarang`
+ORDER BY `judul_ebook` ASC', [], false)
+ 3 APPPATH\Models\ModelEbook.php(16): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(66): App\Models\ModelEbook->AllData()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->GaleriEbook()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2026-01-21 04:41:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 04:41:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 04:41:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 04:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 04:49:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 04:49:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

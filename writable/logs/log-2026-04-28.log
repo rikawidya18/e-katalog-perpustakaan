@@ -1,0 +1,198 @@
+INFO - 2026-04-28 04:10:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-28 04:11:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-28 04:11:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-28 04:11:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-28 04:13:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-28 04:14:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-28 04:14:34 --> mysqli_sql_exception: Unknown column 'tbl_download.id_kategori' in 'on clause' in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `tbl_dow...', 0)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_dow...')
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_dow...')
+#3 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_dow...', Array, false)
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelDownload.php(17): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Download.php(32): App\Models\ModelDownload->AllData()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Download->index()
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Download))
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-04-28 04:14:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tbl_download.id_kategori' in 'on clause'
+[Method: GET, Route: Download]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC', [], false)
+ 2 APPPATH\Models\ModelDownload.php(17): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Download.php(32): App\Models\ModelDownload->AllData()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Download->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Download))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-28 04:14:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tbl_download.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC', [], false)
+ 4 APPPATH\Models\ModelDownload.php(17): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Download.php(32): App\Models\ModelDownload->AllData()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Download->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Download))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-28 04:14:34 --> [Caused by] mysqli_sql_exception: Unknown column 'tbl_download.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC', [], false)
+ 5 APPPATH\Models\ModelDownload.php(17): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Download.php(32): App\Models\ModelDownload->AllData()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Download->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Download))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2026-04-28 04:14:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-28 04:14:41 --> mysqli_sql_exception: Unknown column 'tbl_download.id_kategori' in 'on clause' in C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `tbl_dow...', 0)
+#1 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_dow...')
+#2 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_dow...')
+#3 C:\xampp\htdocs\si_ekatalog_ci4\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_dow...', Array, false)
+#4 C:\xampp\htdocs\si_ekatalog_ci4\app\Models\ModelDownload.php(17): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\si_ekatalog_ci4\app\Controllers\Download.php(32): App\Models\ModelDownload->AllData()
+#6 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(933): App\Controllers\Download->index()
+#7 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Download))
+#8 C:\xampp\htdocs\si_ekatalog_ci4\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\si_ekatalog_ci4\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\si_ekatalog_ci4\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-04-28 04:14:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tbl_download.id_kategori' in 'on clause'
+[Method: GET, Route: Download]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC', [], false)
+ 2 APPPATH\Models\ModelDownload.php(17): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Download.php(32): App\Models\ModelDownload->AllData()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Download->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Download))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-28 04:14:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tbl_download.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC', [], false)
+ 4 APPPATH\Models\ModelDownload.php(17): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Download.php(32): App\Models\ModelDownload->AllData()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Download->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Download))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-28 04:14:41 --> [Caused by] mysqli_sql_exception: Unknown column 'tbl_download.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_download`.*, `tbl_ebook`.`judul_ebook`, `tbl_kategori`.`nama_kategori`
+FROM `tbl_download`
+JOIN `tbl_ebook` ON `tbl_ebook`.`id_ebook` = `tbl_download`.`id_ebook`
+JOIN `tbl_kategori` ON `tbl_kategori`.`id_kategori` = `tbl_download`.`id_kategori`
+LEFT JOIN `tbl_pengunjung` ON `tbl_pengunjung`.`id_pengunjung` = `tbl_download`.`id_pengunjung`
+ORDER BY `id_download` ASC', [], false)
+ 5 APPPATH\Models\ModelDownload.php(17): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Download.php(32): App\Models\ModelDownload->AllData()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Download->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Download))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2026-04-28 04:14:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-28 04:15:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-28 04:17:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
