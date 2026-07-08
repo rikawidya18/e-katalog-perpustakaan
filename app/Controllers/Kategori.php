@@ -11,9 +11,9 @@ class Kategori extends BaseController
 {
     protected $ModelKategori;
 
-    public function __construct() 
+    public function __construct()
     {
-        helper ('form');
+        helper('form');
         $this->ModelKategori = new ModelKategori;
     }
 
@@ -24,16 +24,16 @@ class Kategori extends BaseController
             'submenu' => 'kategori',
             'judul' => 'Kategori',
             'page' => 'v_kategori',
-            'kategori' => $this->ModelKategori-> AllData(),
+            'kategori' => $this->ModelKategori->AllData(),
         ];
         return view('v_template_admin', $data);
     }
 
     public function Add()
     {
-        $data = ['nama_kategori' =>$this->request->getPost('nama_kategori')];
+        $data = ['nama_kategori' => $this->request->getPost('nama_kategori')];
         $this->ModelKategori->Add($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');       
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
         return redirect()->to(base_url('Kategori'));
     }
 
@@ -41,10 +41,10 @@ class Kategori extends BaseController
     {
         $data = [
             'id_kategori' => $id_kategori,
-            'nama_kategori' =>$this->request->getPost('nama_kategori')
+            'nama_kategori' => $this->request->getPost('nama_kategori')
         ];
         $this->ModelKategori->EditData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Di Update!');       
+        session()->setFlashdata('pesan', 'Data Berhasil Di Update!');
         return redirect()->to(base_url('Kategori'));
     }
 
@@ -52,7 +52,21 @@ class Kategori extends BaseController
     {
         $data = ['id_kategori' => $id_kategori];
         $this->ModelKategori->DeleteData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');       
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect()->to(base_url('Kategori'));
+    }
+
+    public function GetByNama($nama)
+    {
+        return $this->db->table('tbl_kategori')
+            ->where('nama_kategori', $nama)
+            ->get()
+            ->getRowArray();
+    }
+
+    public function InsertGetId($data)
+    {
+        $this->db->table('tbl_kategori')->insert($data);
+        return $this->db->insertID();
     }
 }

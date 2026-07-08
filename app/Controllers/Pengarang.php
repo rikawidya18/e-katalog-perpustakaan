@@ -31,16 +31,18 @@ class Pengarang extends BaseController
 
     public function AddData()
     {
-        if ($this->validate([
-            'nama_pengarang' => [
-                'label' => 'Nama Pengarang',
-                'rules' => 'required|is_unique[tbl_pengarang.nama_pengarang]',
-                'errors' => [
-                    'required'  => '{field} Wajib Diisi!',
-                    'is_unique' => '{field} Sudah Terdaftar!',
+        if (
+            $this->validate([
+                'nama_pengarang' => [
+                    'label' => 'Nama Pengarang',
+                    'rules' => 'required|is_unique[tbl_pengarang.nama_pengarang]',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi!',
+                        'is_unique' => '{field} Sudah Terdaftar!',
+                    ]
                 ]
-            ]
-        ])) {
+            ])
+        ) {
 
             // jika lolos validasi
             $data = [
@@ -75,5 +77,19 @@ class Pengarang extends BaseController
         $this->ModelPengarang->DeleteData($data);
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect()->to(base_url('pengarang'));
+    }
+
+    public function GetByNama($nama)
+    {
+        return $this->db->table('tbl_pengarang')
+            ->where('nama_pengarang', $nama)
+            ->get()
+            ->getRowArray();
+    }
+
+    public function InsertGetId($data)
+    {
+        $this->db->table('tbl_pengarang')->insert($data);
+        return $this->db->insertID();
     }
 }

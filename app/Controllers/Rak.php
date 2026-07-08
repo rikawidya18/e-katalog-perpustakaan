@@ -10,9 +10,9 @@ class Rak extends BaseController
 {
     protected $ModelRak;
 
-    public function __construct() 
+    public function __construct()
     {
-        helper ('form');
+        helper('form');
         $this->ModelRak = new ModelRak;
     }
 
@@ -23,7 +23,7 @@ class Rak extends BaseController
             'submenu' => 'rak',
             'judul' => 'Rak',
             'page' => 'v_rak',
-            'rak' => $this->ModelRak-> AllData(),
+            'rak' => $this->ModelRak->AllData(),
         ];
         return view('v_template_admin', $data);
     }
@@ -31,10 +31,10 @@ class Rak extends BaseController
     public function AddData()
     {
         $data = [
-            'nama_rak' =>$this->request->getPost('nama_rak'),
+            'nama_rak' => $this->request->getPost('nama_rak'),
         ];
         $this->ModelRak->AddData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');       
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
         return redirect()->to(base_url('Rak'));
     }
 
@@ -42,10 +42,10 @@ class Rak extends BaseController
     {
         $data = [
             'id_rak' => $id_rak,
-            'nama_rak' =>$this->request->getPost('nama_rak'),
+            'nama_rak' => $this->request->getPost('nama_rak'),
         ];
         $this->ModelRak->EditData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Di Update!');       
+        session()->setFlashdata('pesan', 'Data Berhasil Di Update!');
         return redirect()->to(base_url('Rak'));
     }
 
@@ -53,7 +53,21 @@ class Rak extends BaseController
     {
         $data = ['id_rak' => $id_rak];
         $this->ModelRak->DeleteData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');       
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect()->to(base_url('Rak'));
+    }
+
+    public function GetByNama($nama)
+    {
+        return $this->db->table('tbl_rak')
+            ->where('nama_rak', $nama)
+            ->get()
+            ->getRowArray();
+    }
+
+    public function InsertGetId($data)
+    {
+        $this->db->table('tbl_rak')->insert($data);
+        return $this->db->insertID();
     }
 }

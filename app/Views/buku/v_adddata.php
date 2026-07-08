@@ -100,13 +100,14 @@
                             <div class="form-group">
                                 <label>Kategori</label>
                                 <div class="input-group">
-                                    <select name="id_kategori" class="form-control">
-                                        <option value="">--Pilih Kategori--</option>
-                                        <?php foreach ($kategori as $key => $value) { ?>
-                                        <option value="<?= $value['id_kategori'] ?>"><?= $value['nama_kategori'] ?>
-                                        </option>
-                                        <?php } ?>
-                                    </select>
+                                    <input list="list_kategori" name="kategori" class="form-control">
+
+                                    <datalist id="list_kategori">
+                                        <?php foreach ($kategori as $value) { ?>
+                                        <option value="<?= $value['nama_kategori'] ?>">
+                                            <?php } ?>
+                                    </datalist>
+
                                     <span class="input-group-append">
                                         <a href="<?= base_url('Kategori') ?>" class="btn btn-primary btn-flat">
                                             <i class="fas fa-plus"></i>
@@ -120,13 +121,14 @@
                             <div class="form-group">
                                 <label>Penerbit</label>
                                 <div class="input-group">
-                                    <select name="id_penerbit" class="form-control">
-                                        <option value="">--Pilih Penerbit--</option>
-                                        <?php foreach ($penerbit as $key => $value) { ?>
-                                        <option value="<?= $value['id_penerbit'] ?>"><?= $value['nama_penerbit'] ?>
-                                        </option>
-                                        <?php } ?>
-                                    </select>
+                                    <input list="list_penerbit" name="penerbit" class="form-control">
+
+                                    <datalist id="list_penerbit">
+                                        <?php foreach ($penerbit as $value) { ?>
+                                        <option value="<?= $value['nama_penerbit'] ?>">
+                                            <?php } ?>
+                                    </datalist>
+
                                     <span class="input-group-append">
                                         <a href="<?= base_url('Penerbit') ?>" class="btn btn-primary btn-flat">
                                             <i class="fas fa-plus"></i>
@@ -140,14 +142,14 @@
                             <div class="form-group">
                                 <label>Pengarang</label>
                                 <div class="input-group">
-                                    <select name="id_pengarang" class="form-control">
-                                        <option value="">--Pilih Pengarang--</option>
-                                        <?php foreach ($pengarang as $key => $value) { ?>
-                                        <option value="<?= $value['id_pengarang'] ?>">
-                                            <?= $value['nama_pengarang'] ?>
-                                        </option>
-                                        <?php } ?>
-                                    </select>
+                                    <input list="list_pengarang" name="pengarang" class="form-control">
+
+                                    <datalist id="list_pengarang">
+                                        <?php foreach ($pengarang as $value) { ?>
+                                        <option value="<?= $value['nama_pengarang'] ?>">
+                                            <?php } ?>
+                                    </datalist>
+
                                     <span class="input-group-append">
                                         <a href="<?= base_url('Pengarang') ?>" class="btn btn-primary btn-flat">
                                             <i class="fas fa-plus"></i>
@@ -161,12 +163,14 @@
                             <div class="form-group">
                                 <label>Rak</label>
                                 <div class="input-group">
-                                    <select name="id_rak" class="form-control">
-                                        <option value="">--Pilih Rak--</option>
-                                        <?php foreach ($rak as $key => $value) { ?>
-                                        <option value="<?= $value['id_rak'] ?>"><?= $value['nama_rak'] ?></option>
-                                        <?php } ?>
-                                    </select>
+                                    <input list="list_rak" name="rak" class="form-control">
+
+                                    <datalist id="list_rak">
+                                        <?php foreach ($rak as $value) { ?>
+                                        <option value="<?= $value['nama_rak'] ?>">
+                                            <?php } ?>
+                                    </datalist>
+
                                     <span class="input-group-append">
                                         <a href="<?= base_url('Rak') ?>" class="btn btn-primary btn-flat">
                                             <i class="fas fa-plus"></i>

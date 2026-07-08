@@ -1,250 +1,157 @@
-<!-- Pencarian Buku -->
-<div class="container mt-4">
+<link rel="stylesheet" href="<?= base_url('css/home.css') ?>">
 
-    <section class="hero">
+<div class="form-area">
 
-        <style>
-        .form-area {
-            max-width: 650px;
-            width: 100%;
-            margin: auto;
-        }
+    <h2 class="text-center mb-3">Katalog Perpustakaan</h2>
+    <h8 class="text-center mb-3">Gunakan Fasilitas Pencarian Untuk Menemukan Buku Yang Anda Inginkan</h8>
 
-        .search-box input {
-            border-radius: 5px 0 0 5px;
-        }
+    <form action="<?= base_url('home/HasilCari') ?>" method="get" id="formCari">
 
-        .search-box button {
-            border-radius: 0 5px 5px 0;
-        }
+        <div class="search-box d-flex">
 
-        .area-slider {
-            background: rgba(200, 200, 200, 0.85);
-            padding: 12px;
-            border-radius: 6px;
-        }
+            <input type="text" name="keyword" id="keyword" class="form-control mr-2"
+                placeholder="Cari judul buku atau pengarang">
 
-        /* card buku */
-        .card-buku {
-            position: relative;
-            width: 100%;
-            border-radius: 6px;
-            overflow: hidden;
-            background: #e9e9e9;
-            text-align: center;
-            transition: 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
+            <button type="submit" class="btn btn-warning text-white">
+                Cari
+            </button>
 
-        .card-buku:hover {
-            transform: translateY(-5px);
-        }
-
-        .cover-buku {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-        }
-
-        .info-buku {
-            padding: 6px;
-        }
-
-        .judul-buku {
-            font-size: 13px;
-            line-height: 1.3;
-            height: 34px;
-            overflow: hidden;
-
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .hover-detail {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            background: rgba(0, 0, 0, 0.6);
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .card-buku:hover .hover-detail {
-            opacity: 1;
-        }
-
-        .btn-detail {
-            font-size: 12px;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #ff6a2a;
-        }
-        </style>
+        </div>
 
 
-        <div class="form-area">
+        <div id="warningCari" class="alert alert-warning mt-2" style="display:none;">
 
-            <h2 class="text-center mb-3">Katalog Perpustakaan</h2>
-            <h8 class="text-center mb-3">Gunakan Fasilitas Pencarian Untuk Menemukan Buku Yang Anda Inginkan</h8>
+            <span>Silakan Isi Kolom Pencarian !</span>
 
-            <form action="<?= base_url('home/HasilCari') ?>" method="get" id="formCari">
+            <button type="button" onclick="tutupWarning()"
+                style="float:right;border:none;background:none;font-size:20px;cursor:pointer;">
+                &times;
+            </button>
 
-                <div class="search-box d-flex">
+        </div>
 
-                    <input type="text" name="keyword" id="keyword" class="form-control mr-2"
-                        placeholder="Cari judul buku atau pengarang">
 
-                    <button type="submit" class="btn btn-warning text-white">
-                        Cari
-                    </button>
+        <small data-toggle="collapse" data-target="#pencarianSpesifik" style="cursor:pointer;">
+            <i class="fas fa-filter"></i> Pencarian Spesifik
+        </small>
+
+
+        <div class="collapse mt-3" id="pencarianSpesifik">
+
+            <div class="card card-body">
+
+                <div class="form-group">
+                    <label>Kategori</label>
+
+                    <select name="id_kategori" id="kategori" class="form-control">
+
+                        <option value="">--Pilih Kategori--</option>
+
+                        <?php foreach ($kategori as $value) { ?>
+
+                        <option value="<?= $value['id_kategori'] ?>">
+                            <?= $value['nama_kategori'] ?>
+                        </option>
+
+                        <?php } ?>
+
+                    </select>
 
                 </div>
 
 
-                <div id="warningCari" class="alert alert-warning mt-2" style="display:none;">
-
-                    <span>Silakan Isi Kolom Pencarian !</span>
-
-                    <button type="button" onclick="tutupWarning()"
-                        style="float:right;border:none;background:none;font-size:20px;cursor:pointer;">
-                        &times;
-                    </button>
-
+                <div class="form-group">
+                    <label>Pengarang</label>
+                    <input type="text" name="pengarang" id="pengarang" class="form-control">
                 </div>
 
 
-                <small data-toggle="collapse" data-target="#pencarianSpesifik" style="cursor:pointer;">
-                    <i class="fas fa-filter"></i> Pencarian Spesifik
-                </small>
-
-
-                <div class="collapse mt-3" id="pencarianSpesifik">
-
-                    <div class="card card-body">
-
-                        <div class="form-group">
-                            <label>Kategori</label>
-
-                            <select name="id_kategori" id="kategori" class="form-control">
-
-                                <option value="">--Pilih Kategori--</option>
-
-                                <?php foreach ($kategori as $value) { ?>
-
-                                <option value="<?= $value['id_kategori'] ?>">
-                                    <?= $value['nama_kategori'] ?>
-                                </option>
-
-                                <?php } ?>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Pengarang</label>
-                            <input type="text" name="pengarang" id="pengarang" class="form-control">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Penerbit</label>
-                            <input type="text" name="penerbit" id="penerbit" class="form-control">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Tahun Terbit</label>
-                            <input type="number" name="tahun_terbit" id="tahun" class="form-control">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Tempat Terbit</label>
-                            <input type="text" name="tempat_terbit" id="tempat" class="form-control">
-                        </div>
-
-
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Terapkan Pencarian Spesifik
-                        </button>
-
-                    </div>
-
+                <div class="form-group">
+                    <label>Penerbit</label>
+                    <input type="text" name="penerbit" id="penerbit" class="form-control">
                 </div>
 
-            </form>
 
-
-            <!-- SLIDER BUKU -->
-            <div class="mt-5">
-
-                <h5 class="mb-3">
-                    <i class="fas fa-book text-primary"></i> Buku Terbaru
-                </h5>
-
-                <div class="area-slider">
-
-                    <div class="swiper mySwiper">
-
-                        <div class="swiper-wrapper">
-
-                            <?php foreach ($buku as $b) { ?>
-
-                            <div class="swiper-slide">
-
-                                <div class="card-buku">
-
-                                    <img src="<?= !empty($b['cover']) ? base_url('cover/'.$b['cover']) : base_url('cover/default.png') ?>"
-                                        class="cover-buku">
-
-                                    <div class="hover-detail">
-                                        <a href="<?= base_url('home/detailbuku/'.$b['id_buku']) ?>"
-                                            class="btn btn-light btn-detail">
-                                            Detail Buku
-                                        </a>
-                                    </div>
-
-                                    <div class="info-buku">
-
-                                        <div class="judul-buku">
-                                            <?= $b['judul_buku'] ?>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <?php } ?>
-
-                        </div>
-
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-
-                    </div>
-
+                <div class="form-group">
+                    <label>Tahun Terbit</label>
+                    <input type="number" name="tahun_terbit" id="tahun" class="form-control">
                 </div>
+
+
+                <div class="form-group">
+                    <label>Tempat Terbit</label>
+                    <input type="text" name="tempat_terbit" id="tempat" class="form-control">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    Terapkan Pencarian Spesifik
+                </button>
 
             </div>
 
         </div>
 
-    </section>
+    </form>
+
+
+    <!-- SLIDER BUKU -->
+    <div class="mt-5">
+
+        <h5 class="mb-3">
+            <i class="fas fa-book text-primary"></i> Buku Terbaru
+        </h5>
+
+        <div class="area-slider">
+
+            <div class="swiper mySwiper">
+
+                <div class="swiper-wrapper">
+
+                    <?php foreach ($buku as $b) { ?>
+
+                    <div class="swiper-slide">
+
+                        <div class="card-buku">
+
+                            <img src="<?= !empty($b['cover']) ? base_url('cover/'.$b['cover']) : base_url('cover/default.png') ?>"
+                                class="cover-buku">
+
+                            <div class="hover-detail">
+                                <a href="<?= base_url('home/detailbuku/'.$b['id_buku']) ?>"
+                                    class="btn btn-light btn-detail">
+                                    Detail Buku
+                                </a>
+                            </div>
+
+                            <div class="info-buku">
+
+                                <div class="judul-buku">
+                                    <?= $b['judul_buku'] ?>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <?php } ?>
+
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
 
 </div>
 

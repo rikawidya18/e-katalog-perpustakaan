@@ -3,9 +3,9 @@
         <div class="col-lg-12 col-12">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>User</h3>
+                    <h3>Petugas</h3>
 
-                    <p>Login Untuk User</p>
+                    <p>Login Untuk Petugas</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa fa-user"></i>

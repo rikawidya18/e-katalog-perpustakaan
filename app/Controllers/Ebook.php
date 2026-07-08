@@ -81,7 +81,7 @@ class Ebook extends BaseController
                     ]
                 ],
 
-                'id_kategori' => [
+                'kategori' => [
                     'label' => 'Kategori',
                     'rules' => 'required',
                     'errors' => [
@@ -89,7 +89,7 @@ class Ebook extends BaseController
                     ]
                 ],
 
-                'id_penerbit' => [
+                'penerbit' => [
                     'label' => 'Penerbit',
                     'rules' => 'required',
                     'errors' => [
@@ -97,7 +97,7 @@ class Ebook extends BaseController
                     ]
                 ],
 
-                'id_pengarang' => [
+                'pengarang' => [
                     'label' => 'Pengarang',
                     'rules' => 'required',
                     'errors' => [
@@ -141,10 +141,10 @@ class Ebook extends BaseController
 
                 'file_ebook' => [
                     'label' => 'File Ebook',
-                    'rules' => 'uploaded[file_ebook]|max_size[file_ebook,5120]|ext_in[file_ebook,pdf]',
+                    'rules' => 'uploaded[file_ebook]|max_size[file_ebook,15360]|ext_in[file_ebook,pdf]',
                     'errors' => [
                         'uploaded' => '{field} Wajib Diisi !',
-                        'max_size' => '{field} Max 5 mb !',
+                        'max_size' => '{field} Max 15 mb !',
                         'ext_in' => 'Format {field} Harus PDF !',
                     ]
                 ],
@@ -164,12 +164,25 @@ class Ebook extends BaseController
             $nama_file = $cover->getRandomName();
             $file_ebook = $this->request->getFile('file_ebook');
             $nama_file_ebook = $file_ebook->getRandomName();
+
+            $id_kategori = $this->getOrCreateKategori(
+                trim($this->request->getPost('kategori'))
+            );
+
+            $id_pengarang = $this->getOrCreatePengarang(
+                trim($this->request->getPost('pengarang'))
+            );
+
+            $id_penerbit = $this->getOrCreatePenerbit(
+                trim($this->request->getPost('penerbit'))
+            );
+            
             $data = [
                 'judul_ebook' => $this->request->getPost('judul_ebook'),
                 'isbn' => $this->request->getPost('isbn'),
-                'id_kategori' => $this->request->getPost('id_kategori'),
-                'id_penerbit' => $this->request->getPost('id_penerbit'),
-                'id_pengarang' => $this->request->getPost('id_pengarang'),
+                'id_kategori' => $id_kategori,
+                'id_penerbit' => $id_penerbit,
+                'id_pengarang' => $id_pengarang,
                 'tahun_terbit' => $this->request->getPost('tahun_terbit'),
                 'tempat_terbit' => $this->request->getPost('tempat_terbit'),
                 'bahasa' => $this->request->getPost('bahasa'),

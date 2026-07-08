@@ -104,7 +104,7 @@ class Buku extends BaseController
                     ]
                 ],
 
-                'id_kategori' => [
+                'kategori' => [
                     'label' => 'Kategori',
                     'rules' => 'required',
                     'errors' => [
@@ -112,7 +112,7 @@ class Buku extends BaseController
                     ]
                 ],
 
-                'id_penerbit' => [
+                'penerbit' => [
                     'label' => 'Penerbit',
                     'rules' => 'required',
                     'errors' => [
@@ -120,7 +120,7 @@ class Buku extends BaseController
                     ]
                 ],
 
-                'id_pengarang' => [
+                'pengarang' => [
                     'label' => 'Pengarang',
                     'rules' => 'required',
                     'errors' => [
@@ -128,7 +128,7 @@ class Buku extends BaseController
                     ]
                 ],
 
-                'id_rak' => [
+                'rak' => [
                     'label' => 'Rak',
                     'rules' => 'required',
                     'errors' => [
@@ -191,16 +191,32 @@ class Buku extends BaseController
             //jika lolos validasi
             $cover = $this->request->getFile('cover');
             $nama_file = $cover->getRandomName();
+            $id_kategori = $this->getOrCreateKategori(
+                trim($this->request->getPost('kategori'))
+            );
+
+            $id_pengarang = $this->getOrCreatePengarang(
+                trim($this->request->getPost('pengarang'))
+            );
+
+            $id_penerbit = $this->getOrCreatePenerbit(
+                trim($this->request->getPost('penerbit'))
+            );
+
+            $id_rak = $this->getOrCreateRak(
+                trim($this->request->getPost('rak'))
+            );
+            
             $data = [
                 'judul_buku' => $this->request->getPost('judul_buku'),
                 'kode_buku' => $this->request->getPost('kode_buku'),
                 'kode_eksemplar' => $this->request->getPost('kode_eksemplar'),
                 'eksemplar' => $this->request->getPost('eksemplar'),
                 'isbn' => $this->request->getPost('isbn'),
-                'id_kategori' => $this->request->getPost('id_kategori'),
-                'id_penerbit' => $this->request->getPost('id_penerbit'),
-                'id_pengarang' => $this->request->getPost('id_pengarang'),
-                'id_rak' => $this->request->getPost('id_rak'),
+                'id_kategori' => $id_kategori,
+                'id_penerbit' => $id_penerbit,
+                'id_pengarang' => $id_pengarang,
+                'id_rak' => $id_rak,
                 'tahun_terbit' => $this->request->getPost('tahun_terbit'),
                 'tempat_terbit' => $this->request->getPost('tempat_terbit'),
                 'jenis_buku' => $this->request->getPost('jenis_buku'),

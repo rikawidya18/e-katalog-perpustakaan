@@ -23,7 +23,7 @@ class ModelBuku extends Model
                 tbl_kategori.nama_kategori,
                 tbl_rak.nama_rak
             ')
-            ->orderBy('judul_buku', 'ASC')
+            ->orderBy('id_buku', 'DESC')
             ->get()
             ->getResultArray();
     }

@@ -21,7 +21,7 @@ class ModelEbook extends Model
                 tbl_penerbit.nama_penerbit,
                 tbl_kategori.nama_kategori
             ')
-            ->orderBy('judul_ebook', 'ASC')
+            ->orderBy('id_ebook', 'DESC')
             ->get()->getResultArray();
     }
 

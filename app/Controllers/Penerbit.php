@@ -31,16 +31,18 @@ class Penerbit extends BaseController
 
     public function AddData()
     {
-        if ($this->validate([
-            'nama_penerbit' => [
-                'label' => 'Nama Penerbit',
-                'rules' => 'required|is_unique[tbl_penerbit.nama_penerbit]',
-                'errors' => [
-                    'required'  => '{field} Wajib Diisi!',
-                    'is_unique' => '{field} Sudah Terdaftar!',
+        if (
+            $this->validate([
+                'nama_penerbit' => [
+                    'label' => 'Nama Penerbit',
+                    'rules' => 'required|is_unique[tbl_penerbit.nama_penerbit]',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi!',
+                        'is_unique' => '{field} Sudah Terdaftar!',
+                    ]
                 ]
-            ]
-        ])) {
+            ])
+        ) {
 
             // jika lolos validasi
             $data = [
@@ -75,5 +77,19 @@ class Penerbit extends BaseController
         $this->ModelPenerbit->DeleteData($data);
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect()->to(base_url('Penerbit'));
+    }
+
+    public function GetByNama($nama)
+    {
+        return $this->db->table('tbl_penerbit')
+            ->where('nama_penerbit', $nama)
+            ->get()
+            ->getRowArray();
+    }
+
+    public function InsertGetId($data)
+    {
+        $this->db->table('tbl_penerbit')->insert($data);
+        return $this->db->insertID();
     }
 }
