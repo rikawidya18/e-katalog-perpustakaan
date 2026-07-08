@@ -176,7 +176,7 @@ class Ebook extends BaseController
             $id_penerbit = $this->getOrCreatePenerbit(
                 trim($this->request->getPost('penerbit'))
             );
-            
+
             $data = [
                 'judul_ebook' => $this->request->getPost('judul_ebook'),
                 'isbn' => $this->request->getPost('isbn'),
@@ -424,7 +424,6 @@ class Ebook extends BaseController
         // AMBIL ID PENGUNJUNG (SESSION)
         // =============================
         $id_pengunjung = session()->get('id_pengunjung');
-
         if (!$id_pengunjung) {
             session()->setFlashdata('pesan', 'Silakan login terlebih dahulu!');
             return redirect()->to(base_url('Auth/LoginPengunjung'));
@@ -455,12 +454,6 @@ class Ebook extends BaseController
         // =============================
         // TRANSAKSI
         // =============================
-        $db->transBegin();
-
-        
-        // =============================
-        // TRANSAKSI
-        // =============================
         $db = \Config\Database::connect(); // 🔥 FIX ERROR undefined $this->db
         $db->transBegin();
 
@@ -473,7 +466,7 @@ class Ebook extends BaseController
             'tgl_download' => date('Y-m-d H:i:s')
         ];
 
-        $this->ModelDownload->AddData($dataDownload);
+        $db->table('tbl_download')->insert($dataDownload);
 
         // =============================
         // 2. UPDATE JUMLAH DOWNLOAD
