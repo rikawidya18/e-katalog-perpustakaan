@@ -177,7 +177,7 @@ class Auth extends BaseController
                 'no_hp' => $this->request->getPost('no_hp'),
                 'email' => $this->request->getPost('email'),
                 'password' => $this->request->getPost('password'),
-                'verifikasi' => 'null',
+                'verifikasi' => null,
                 'tgl_input' => date('Y-m-d'), //
             ];
             $this->ModelAuth->Daftar($data);

@@ -69,57 +69,64 @@
                         <th width="80px">Action</th>
                     </tr>
                 </thead>
+
                 <?php $no = 1;
                 foreach ($pengunjung as $key => $value) { ?>
-                <tr>
-                    <td class="text-center"><?= $no++ ?>.</td>
-                    <td>
-                        <?= $value['nama_pengunjung'] ?><br>
+                    <tr>
+                        <td class="text-center"><?= $no++ ?>.</td>
+                        <td>
+                            <?= $value['nama_pengunjung'] ?><br>
 
-                        <?php if ($value['verifikasi'] != null): ?>
-                        <span class="text-success">
-                            <i class="fas fa-check"></i> Verifikasi
-                        </span><br>
+                            <?php if ($value['verifikasi'] != 0): ?>
 
-                        <small>
-                            Oleh: <b><?= $value['nama_user'] ?? '-' ?></b><br>
-                            Tanggal: <?= $value['tgl_verifikasi'] ?? '-' ?>
-                        </small>
-                        <?php else: ?>
-                        <span class="text-danger">
-                            <i class="fas fa-times"></i> Belum Terverifikasi
-                        </span><br>
+                                <span class="text-success">
+                                    <i class="fas fa-check"></i> Terverifikasi
+                                </span><br>
 
-                        <a class="btn btn-success btn-xs"
-                            href="<?= base_url('Pengunjung/Verifikasi/' . $value['id_pengunjung']) ?>">
-                            Verifikasi Sekarang
-                        </a>
-                        <?php endif; ?>
-                    </td>
+                                <small>
+                                    Oleh: <b><?= !empty($value['nama_user']) ? $value['nama_user'] : '-' ?></b><br>
+                                    Tanggal:
+                                    <?= !empty($value['tgl_verifikasi']) ? $value['tgl_verifikasi'] : '-' ?>
+                                </small>
 
-                    <td><?= date('d-m-Y', strtotime($value['tgl_input'])) ?></td>
-                    <td>PNJ<?= sprintf("%04d", $value['id_pengunjung']) ?></td>
-                    <td><?= $value['jenis_kelamin'] ?></td>
-                    <td><?= $value['alamat'] ?></td>
-                    <td><?= $value['no_hp'] ?></td>
-                    <td><?= $value['email'] ?></td>
-                    <td><?= $value['password'] ?></td>
-                    <td><?= $value['nama_kelas'] ?></td>
-                    <td class="text-center"><img src="<?= base_url('foto/' . $value['foto']) ?>" width="50px"
-                            height="50px"></td>
-                    <td class="text-center">
-                        <a href="<?= base_url('Pengunjung/EditData/' . $value['id_pengunjung']) ?>"
-                            class="btn btn-warning btn-flat btn-sm">
-                            <i class="fas fa-edit"></i>
-                        </a>
+                            <?php else: ?>
 
-                        <button type="button" class="btn btn-danger btn-flat btn-sm" data-toggle="modal"
-                            data-target="#modal-delete<?= $value['id_pengunjung'] ?>">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                                <span class="text-danger">
+                                    <i class="fas fa-times"></i> Belum Terverifikasi
+                                </span><br>
 
-                    </td>
-                </tr>
+                                <a class="btn btn-success btn-xs"
+                                    href="<?= base_url('Pengunjung/Verifikasi/' . $value['id_pengunjung']) ?>"
+                                    onclick="return confirm('Yakin ingin memverifikasi pengunjung ini?')">
+                                    Verifikasi Sekarang
+                                </a>
+
+                            <?php endif; ?>
+                        </td>
+
+                        <td><?= date('d-m-Y', strtotime($value['tgl_input'])) ?></td>
+                        <td>PNJ<?= sprintf("%04d", $value['id_pengunjung']) ?></td>
+                        <td><?= $value['jenis_kelamin'] ?></td>
+                        <td><?= $value['alamat'] ?></td>
+                        <td><?= $value['no_hp'] ?></td>
+                        <td><?= $value['email'] ?></td>
+                        <td><?= $value['password'] ?></td>
+                        <td><?= $value['nama_kelas'] ?></td>
+                        <td class="text-center"><img src="<?= base_url('foto/' . $value['foto']) ?>" width="50px"
+                                height="50px"></td>
+                        <td class="text-center">
+                            <a href="<?= base_url('Pengunjung/EditData/' . $value['id_pengunjung']) ?>"
+                                class="btn btn-warning btn-flat btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+
+                            <button type="button" class="btn btn-danger btn-flat btn-sm" data-toggle="modal"
+                                data-target="#modal-delete<?= $value['id_pengunjung'] ?>">
+                                <i class="fas fa-trash"></i>
+                            </button>
+
+                        </td>
+                    </tr>
                 <?php } ?>
             </table>
 
@@ -132,30 +139,30 @@
 
 <!-- Modal Delete -->
 <?php foreach ($pengunjung as $key => $value) { ?>
-<div class="modal fade" id="modal-delete<?= $value['id_pengunjung'] ?>">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Delete <?= $judul ?></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <?php echo form_open(base_url('pengunjung/DeleteData/' . $value['id_pengunjung'])) ?>
-                <div class="form-group">
-                    Yakin Ingin Menghapus Data <b><?= $value['nama_pengunjung'] ?></b>... ?
+    <div class="modal fade" id="modal-delete<?= $value['id_pengunjung'] ?>">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete <?= $judul ?></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
+                    <?php echo form_open(base_url('pengunjung/DeleteData/' . $value['id_pengunjung'])) ?>
+                    <div class="form-group">
+                        Yakin Ingin Menghapus Data <b><?= $value['nama_pengunjung'] ?></b>... ?
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger btn-flat">Delete</button>
+                </div>
+                <?php echo form_close() ?>
             </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger btn-flat">Delete</button>
-            </div>
-            <?php echo form_close() ?>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+    <!-- /.modal -->
 <?php } ?>
