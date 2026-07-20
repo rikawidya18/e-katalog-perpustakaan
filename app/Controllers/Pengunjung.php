@@ -83,6 +83,13 @@ class Pengunjung extends BaseController
                         'required' => '{field} Wajib Diisi !',
                     ]
                 ],
+                'usia' => [
+                    'label' => 'Usia',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi !',
+                    ]
+                ],
                 'no_hp' => [
                     'label' => 'No Handphone',
                     'rules' => 'required',
@@ -112,6 +119,27 @@ class Pengunjung extends BaseController
                         'required' => '{field} Wajib Diisi !',
                     ]
                 ],
+                'kecamatan' => [
+                    'label' => 'Kecamatan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi !',
+                    ]
+                ],
+                'kota_kabupaten' => [
+                    'label' => 'Kota/Kabupaten',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi !',
+                    ]
+                ],
+                'provinsi' => [
+                    'label' => 'Provinsi',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi !',
+                    ]
+                ],
                 'foto' => [
                     'label' => 'Foto Pengunjung',
                     'rules' => 'uploaded[foto]|max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
@@ -131,10 +159,14 @@ class Pengunjung extends BaseController
                 'id_kelas' => $this->request->getPost('id_kelas'),
                 'nama_pengunjung' => $this->request->getPost('nama_pengunjung'),
                 'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+                'usia' => $this->request->getPost('usia'),
                 'no_hp' => $this->request->getPost('no_hp'),
                 'email' => $this->request->getPost('email'),
                 'password' => $this->request->getPost('password'),
                 'alamat' => $this->request->getPost('alamat'),
+                'kecamatan' => $this->request->getPost('kecamatan'),
+                'kota_kabupaten' => $this->request->getPost('kota_kabupaten'),
+                'provinsi' => $this->request->getPost('provinsi'),
                 'foto' => $nama_file,
                 'verifikasi' => '1',
                 'tgl_input' => date('Y-m-d'),
@@ -188,6 +220,13 @@ class Pengunjung extends BaseController
                         'required' => '{field} Wajib Diisi !',
                     ]
                 ],
+                'usia' => [
+                    'label' => 'Usia',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi !',
+                    ]
+                ],                
                 'no_hp' => [
                     'label' => 'No Handphone',
                     'rules' => 'required',
@@ -218,6 +257,27 @@ class Pengunjung extends BaseController
                         'required' => '{field} Wajib Diisi !',
                     ]
                 ],
+                'kecamatan' => [
+                    'label' => 'Kecamatan',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi !',
+                    ]
+                ],
+                'kota_kabupaten' => [
+                    'label' => 'Kota/Kabupaten',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi !',
+                    ]
+                ],
+                'provinsi' => [
+                    'label' => 'Provinsi',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Wajib Diisi !',
+                    ]
+                ],
                 'foto' => [
                     'label' => 'Foto Pengunjung',
                     'rules' => 'max_size[foto,1024]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png]',
@@ -240,10 +300,14 @@ class Pengunjung extends BaseController
                     'id_kelas' => $this->request->getPost('id_kelas'),
                     'nama_pengunjung' => $this->request->getPost('nama_pengunjung'),
                     'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+                    'usia' => $this->request->getPost('usia'),
                     'no_hp' => $this->request->getPost('no_hp'),
                     'email' => $this->request->getPost('email'),
                     'password' => $this->request->getPost('password'),
                     'alamat' => $this->request->getPost('alamat'),
+                    'kecamatan' => $this->request->getPost('kecamatan'),
+                    'kota_kabupaten' => $this->request->getPost('kota_kabupaten'),
+                    'provinsi' => $this->request->getPost('provinsi'),
                     'verifikasi' => '1',
                     'foto' => $pengunjung['foto'], // foto akan tampil sesuai yang ada
                 ];
@@ -265,10 +329,14 @@ class Pengunjung extends BaseController
                     'id_kelas' => $this->request->getPost('id_kelas'),
                     'nama_pengunjung' => $this->request->getPost('nama_pengunjung'),
                     'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+                    'usia' => $this->request->getPost('usia'),
                     'no_hp' => $this->request->getPost('no_hp'),
                     'email' => $this->request->getPost('email'),
                     'password' => $this->request->getPost('password'),
                     'alamat' => $this->request->getPost('alamat'),
+                    'kecamatan' => $this->request->getPost('kecamatan'),
+                    'kota_kabupaten' => $this->request->getPost('kota_kabupaten'),
+                    'provinsi' => $this->request->getPost('provinsi'),
                     'foto' => $nama_file, //foto akan diperbarui sesuai yg diupload
                     'verifikasi' => '1',
                 ];

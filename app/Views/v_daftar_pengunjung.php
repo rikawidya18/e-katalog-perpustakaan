@@ -60,7 +60,28 @@
             </div>
 
             <div class="form-group">
+                <input type="number" class="form-control" name="usia" value="<?= old('usia')?>" placeholder="Usia">
+            </div>
+
+            <div class="form-group">
                 <input class="form-control" name="email" value="<?= old('email')?>" placeholder="E-Mail">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" name="alamat" value="<?= old('alamat')?>" placeholder="Alamat Lengkap">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" name="kecamatan" value="<?= old('kecamatan')?>" placeholder="Kecamatan">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" name="kota_kabupaten" value="<?= old('kota_kabupaten')?>"
+                    placeholder="Kabupaten / Kota">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" name="provinsi" value="<?= old('provinsi')?>" placeholder="Provinsi">
             </div>
 
             <div class="form-group">
