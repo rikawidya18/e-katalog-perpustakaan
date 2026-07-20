@@ -43,8 +43,28 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Usia</label>
+                        <input class="form-control" name="usia" value="<?= $pengunjung['usia'] ?>">
+                    </div>
+
+                    <div class="form-group">
                         <label>Alamat</label>
                         <input class="form-control" name="alamat" value="<?= $pengunjung['alamat'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kecamatan</label>
+                        <input class="form-control" name="kecamatan" value="<?= $pengunjung['kecamatan'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kota/Kabupaten</label>
+                        <input class="form-control" name="kota_kabupaten" value="<?= $pengunjung['kota_kabupaten'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Provinsi</label>
+                        <input class="form-control" name="provinsi" value="<?= $pengunjung['provinsi'] ?>">
                     </div>
 
                     <div class="form-group">
@@ -53,7 +73,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Kelas</label>
+                        <label>Kategori Pengunjung</label>
                         <select name="id_kelas" class="form-control">
 
                             <option value="<?= $pengunjung['id_kelas'] ?>" selected>

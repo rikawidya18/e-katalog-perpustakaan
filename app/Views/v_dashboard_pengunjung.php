@@ -3,35 +3,35 @@
 
     if (!empty($pengunjung['verifikasi']) && $pengunjung['verifikasi'] == 1): ?>
 
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="fa fa-check"></i> Akun Anda Sudah Terverifikasi ! </h4>
-        </div>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="fa fa-check"></i> Akun Anda Sudah Terverifikasi ! </h4>
+    </div>
 
     <?php else: ?>
 
-        <div class="alert alert-danger alert-dismissible shadow-sm">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                &times;
-            </button>
+    <div class="alert alert-danger alert-dismissible shadow-sm">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+            &times;
+        </button>
 
-            <h5 class="font-weight-bold">
-                <i class="fas fa-exclamation-circle mr-1"></i>
-                Akun Anda Belum Terverifikasi
-            </h5>
+        <h5 class="font-weight-bold">
+            <i class="fas fa-exclamation-circle mr-1"></i>
+            Akun Anda Belum Terverifikasi
+        </h5>
 
-            <p class="mb-1">
-                Silakan hubungi petugas Perpustakaan Museum Negeri NTB untuk proses verifikasi akun.
-            </p>
+        <p class="mb-1">
+            Silakan hubungi petugas Perpustakaan Museum Negeri NTB untuk proses verifikasi akun.
+        </p>
 
-            <p class="mb-0">
-                <i class="fas fa-envelope mr-1"></i>
-                Email:
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=PerpustakaanMuseumNTB@gmail.com" target="_blank">
-                    <b>PerpustakaanMuseumNTB@gmail.com</b>
-                </a>
-            </p>
-        </div>
+        <p class="mb-0">
+            <i class="fas fa-envelope mr-1"></i>
+            Email:
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=PerpustakaanMuseumNTB@gmail.com" target="_blank">
+                <b>PerpustakaanMuseumNTB@gmail.com</b>
+            </a>
+        </p>
+    </div>
 
     <?php endif; ?>
 </div>
@@ -109,7 +109,7 @@
                     <td> <?= $pengunjung['email'] ?></td>
                 </tr>
                 <tr>
-                    <th>Kelas</th>
+                    <th>Kategori Pengunjung</th>
                     <th> : </th>
                     <td> <?= $pengunjung['nama_kelas'] ?></td>
                 </tr>

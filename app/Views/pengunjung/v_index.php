@@ -68,7 +68,7 @@
                         <th>No Handphone</th>
                         <th>E-Mail</th>
                         <th>Password</th>
-                        <th>Kelas</th>
+                        <th>Kategori Pengunjung</th>
                         <th>Foto</th>
                         <th width="80px">Action</th>
                     </tr>

@@ -184,6 +184,14 @@
                                         <p>Download</p>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="<?= base_url('History') ?>"
+                                        class="nav-link <?= $submenu == 'history' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Riwayat Aktivitas</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -243,9 +251,6 @@
                                         <p>Web</p>
                                     </a>
                                 </li>
-
-
-
 
                             </ul>
                         </li>

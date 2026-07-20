@@ -166,3 +166,59 @@ new Chart(document.getElementById('grafikPengunjung'), {
         }
     }
 });
+
+
+/* =============================
+   GRAFIK AKTIVITAS
+============================= */
+
+new Chart(document.getElementById('grafikHistory'), {
+
+    type: 'pie',
+
+    data: {
+
+        labels: labelAktivitas,
+
+        datasets: [{
+
+            data: dataAktivitas,
+
+            backgroundColor: [
+                '#007bff',
+                '#28a745',
+                '#ffc107',
+                '#dc3545',
+                '#17a2b8',
+                '#6f42c1'
+            ]
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        plugins: {
+
+            title: {
+
+                display: true,
+
+                text: 'Grafik Aktivitas Pengunjung'
+
+            },
+
+            legend: {
+
+                position: 'bottom'
+
+            }
+
+        }
+
+    }
+
+});

@@ -1,23 +1,13 @@
 <div class="col-md-12">
     <div class="card card-outline card-primary">
+
         <div class="card-header">
-            <h3 class="card-title">Data <?= $judul ?></h3>
+            <h3 class="card-title"><?= $judul ?></h3>
         </div>
-        <!-- /.card-header -->
 
         <div class="card-body">
 
-            <?php
-            if (session()->getFlashdata('pesan')) {
-                echo '<div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h5><i class="icon fas fa-check"></i> ';
-                echo session()->getFlashdata('pesan');
-                echo '</h5></div>';
-            }
-            ?>
-
-            <table class="table table-bordered">
+            <table id="example1" class="table table-bordered table-hover">
                 <thead>
                     <tr class="text-center">
                         <th width="50px">No</th>

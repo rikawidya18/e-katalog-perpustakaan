@@ -6,6 +6,7 @@ use App\Models\ModelPengaturan;
 use App\Models\ModelBuku;
 use App\Models\ModelEbook;
 use App\Models\ModelKategori;
+use App\Models\ModelHistory;
 
 class Home extends BaseController
 {
@@ -14,6 +15,7 @@ class Home extends BaseController
     protected $ModelBuku;
     protected $ModelEbook;
     protected $ModelKategori;
+    protected $ModelHistory;
 
     public function __construct()
     {
@@ -23,6 +25,7 @@ class Home extends BaseController
         $this->ModelBuku = new ModelBuku();
         $this->ModelEbook = new ModelEbook();
         $this->ModelKategori = new ModelKategori();
+        $this->ModelHistory = new ModelHistory();
     }
 
     public function index()
@@ -84,6 +87,16 @@ class Home extends BaseController
 
     public function DetailBuku($id_buku)
     {
+        if (session()->get('id_pengunjung')) {
+
+            $this->ModelHistory->AddData([
+                'id_pengunjung' => session()->get('id_pengunjung'),
+                'aktivitas' => 'Melihat Buku',
+                'id_buku' => $id_buku,
+                'tgl_history' => date('Y-m-d H:i:s')
+            ]);
+        }
+
         $data = [
             'judul' => 'Detail Buku',
             'page' => 'v_detail_buku',
@@ -95,6 +108,16 @@ class Home extends BaseController
 
     public function DetailEbook($id_ebook)
     {
+        if (session()->get('id_pengunjung')) {
+
+            $this->ModelHistory->AddData([
+                'id_pengunjung' => session()->get('id_pengunjung'),
+                'aktivitas' => 'Melihat Ebook',
+                'id_ebook' => $id_ebook,
+                'tgl_history' => date('Y-m-d H:i:s')
+            ]);
+        }
+
         $data = [
             'judul' => 'Detail Ebook',
             'page' => 'v_detail_ebook',
@@ -116,6 +139,16 @@ class Home extends BaseController
 
         $buku = $this->ModelBuku->CariBuku($keyword, $kategori, $pengarang, $penerbit, $tahun, $tempat);
         $ebook = $this->ModelEbook->CariEbook($keyword, $kategori, $pengarang, $penerbit, $tahun, $tempat);
+
+        if (session()->get('id_pengunjung')) {
+
+            $this->ModelHistory->AddData([
+                'id_pengunjung' => session()->get('id_pengunjung'),
+                'aktivitas' => 'Pencarian',
+                'keyword' => $keyword,
+                'tgl_history' => date('Y-m-d H:i:s')
+            ]);
+        }
 
         $data = [
             'judul' => 'Hasil Pencarian',

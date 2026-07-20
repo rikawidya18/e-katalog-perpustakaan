@@ -54,6 +54,9 @@ $data_ebook = $data_ebook ?? '[]';
 
 $label_pengunjung = $label_pengunjung ?? '[]';
 $data_pengunjung = $data_pengunjung ?? '[]';
+
+$label_aktivitas = $label_aktivitas ?? '[]';
+$data_aktivitas = $data_aktivitas ?? '[]';
 ?>
 
 <?php
@@ -79,6 +82,24 @@ if (!empty($tgl_awal_pengunjung) && !empty($tgl_akhir_pengunjung)) {
     $judul_filter_pengunjung = "Periode " . date('d-m-Y', strtotime($tgl_awal_pengunjung)) . " s/d " . date('d-m-Y', strtotime($tgl_akhir_pengunjung));
 } else {
     $judul_filter_pengunjung = "Semua Data";
+}
+
+//FILTER HISTORY
+$tgl_awal_history = $_GET['tgl_awal_history'] ?? '';
+$tgl_akhir_history = $_GET['tgl_akhir_history'] ?? '';
+
+if (!empty($tgl_awal_history) && !empty($tgl_akhir_history)) {
+
+    $judul_filter_history =
+        "Periode "
+        . date('d-m-Y', strtotime($tgl_awal_history))
+        . " s/d "
+        . date('d-m-Y', strtotime($tgl_akhir_history));
+
+} else {
+
+    $judul_filter_history = "Semua Data";
+
 }
 ?>
 
@@ -176,7 +197,55 @@ if (!empty($tgl_awal_pengunjung) && !empty($tgl_akhir_pengunjung)) {
         </div>
     </div>
 
-</div>
+
+    <!-- ============================= -->
+    <!-- GRAFIK HISTORY-->
+    <!-- ============================= -->
+    <div class="col-md-6">
+
+        <div class="card card-outline card-danger">
+
+            <div class="card-header">
+
+                <h3 class="card-title">
+                    Grafik Riwayat Aktivitas
+                </h3>
+
+            </div>
+
+            <form method="GET">
+
+                <div class="row p-2">
+
+                    <div class="col-md-4">
+                        <input type="date" name="tgl_awal_history" value="<?= $tgl_awal_history ?>"
+                            class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="date" name="tgl_akhir_history" value="<?= $tgl_akhir_history ?>"
+                            class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <button class="btn btn-danger">
+                            Filter
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+            <div class="card-body">
+
+                <canvas id="grafikHistory"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -194,6 +263,17 @@ const dataPengunjung = <?= $data_pengunjung ?>;
 const judulFilterDownload = "<?= $judul_filter_download ?>";
 const judulFilterBuku = "<?= $judul_filter_buku ?>";
 const judulFilterPengunjung = "<?= $judul_filter_pengunjung ?>";
+
+const labelAktivitas = <?= $label_aktivitas ?>;
+const dataAktivitas = <?= $data_aktivitas ?>;
+
+//const judulFilterHistory = "<?= $judul_filter_history ?>";
+</script>
+
+<script>
+console.log(labelAktivitas);
+console.log(dataAktivitas);
+//console.log(judulFilterHistory);
 </script>
 
 <script src="<?= base_url('js/dashboard_admin.js') ?>"></script>

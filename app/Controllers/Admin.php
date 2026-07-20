@@ -4,17 +4,20 @@ namespace App\Controllers;
 
 use App\Models\ModelAdmin;
 use App\Models\ModelEbook;
+use App\Models\ModelHistory;
 
 class Admin extends BaseController
 {
 
     protected $ModelAdmin;
     protected $ModelEbook;
+    protected $ModelHistory;
 
     public function __construct()
     {
         $this->ModelAdmin = new ModelAdmin;
         $this->ModelEbook = new ModelEbook;
+        $this->ModelHistory = new ModelHistory;
     }
 
     public function index(): string
@@ -28,6 +31,10 @@ class Admin extends BaseController
         // FILTER PENGUNJUNG
         $tgl_awal_pengunjung = $this->request->getGet('tgl_awal_pengunjung');
         $tgl_akhir_pengunjung = $this->request->getGet('tgl_akhir_pengunjung');
+
+        // FILTER HISTORY
+        $tgl_awal_history = $this->request->getGet('tgl_awal_history');
+        $tgl_akhir_history = $this->request->getGet('tgl_akhir_history');
 
         // =============================
         // GRAFIK DOWNLOAD
@@ -88,6 +95,27 @@ class Admin extends BaseController
             $data_pengunjung[] = (int) $row['jumlah'];
         }
 
+    // =============================
+    // GRAFIK AKTIVITAS
+    // =============================
+
+    $queryAktivitas = $db->query("
+        SELECT aktivitas, COUNT(*) AS jumlah
+        FROM tbl_melihat
+        GROUP BY aktivitas
+        ORDER BY jumlah DESC
+    ");
+
+    $resultAktivitas = $queryAktivitas->getResultArray();
+
+    $label_aktivitas = [];
+    $data_aktivitas = [];
+
+    foreach ($resultAktivitas as $row) {
+        $label_aktivitas[] = $row['aktivitas'];
+        $data_aktivitas[] = (int)$row['jumlah'];
+    }
+
         // =============================
         // KIRIM KE VIEW
         // =============================
@@ -100,6 +128,7 @@ class Admin extends BaseController
             'totalbuku' => $this->ModelAdmin->TotalBuku(),
             'totalebook' => $this->ModelAdmin->TotalEbook(),
             'totalpengunjung' => $this->ModelAdmin->TotalPengunjung(),
+            //'totalhistory' => $this->ModelHistory->TotalHistory(),
 
             'label_download' => json_encode($label_download),
             'data_download' => json_encode($data_download),
@@ -110,8 +139,12 @@ class Admin extends BaseController
 
             'label_pengunjung' => json_encode($label_pengunjung),
             'data_pengunjung' => json_encode($data_pengunjung),
-        ];
 
+            'label_aktivitas' => json_encode($label_aktivitas),
+            'data_aktivitas' => json_encode($data_aktivitas),
+
+
+        ];
         return view('v_template_admin', $data);
     }
 }
