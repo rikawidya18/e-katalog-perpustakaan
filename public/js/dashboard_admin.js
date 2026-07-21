@@ -167,14 +167,13 @@ new Chart(document.getElementById('grafikPengunjung'), {
     }
 });
 
-
 /* =============================
-   GRAFIK AKTIVITAS
+GRAFIK AKTIVITAS
 ============================= */
 
 new Chart(document.getElementById('grafikHistory'), {
 
-    type: 'pie',
+    type: 'bar',
 
     data: {
 
@@ -182,16 +181,23 @@ new Chart(document.getElementById('grafikHistory'), {
 
         datasets: [{
 
+            label: 'Jumlah Aktivitas',
+
             data: dataAktivitas,
 
             backgroundColor: [
                 '#007bff',
                 '#28a745',
-                '#ffc107',
-                '#dc3545',
-                '#17a2b8',
-                '#6f42c1'
-            ]
+                '#ffc107'
+            ],
+
+            borderColor: [
+                '#007bff',
+                '#28a745',
+                '#ffc107'
+            ],
+
+            borderWidth: 1
 
         }]
 
@@ -199,21 +205,59 @@ new Chart(document.getElementById('grafikHistory'), {
 
     options: {
 
+        indexAxis: 'y',   // Membuat bar menjadi horizontal
+
         responsive: true,
 
         plugins: {
+
+            legend: {
+                display: false
+            },
 
             title: {
 
                 display: true,
 
-                text: 'Grafik Aktivitas Pengunjung'
+                text: 'Grafik Aktivitas Pengunjung',
+
+                font: {
+                    size: 16
+                }
+
+            }
+
+        },
+
+        scales: {
+
+            x: {
+
+                beginAtZero: true,
+
+                ticks: {
+                    precision: 0
+                },
+
+                title: {
+
+                    display: true,
+
+                    text: 'Jumlah Aktivitas'
+
+                }
 
             },
 
-            legend: {
+            y: {
 
-                position: 'bottom'
+                title: {
+
+                    display: true,
+
+                    text: 'Jenis Aktivitas'
+
+                }
 
             }
 
