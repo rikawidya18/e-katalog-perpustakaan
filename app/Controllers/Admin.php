@@ -95,26 +95,35 @@ class Admin extends BaseController
             $data_pengunjung[] = (int) $row['jumlah'];
         }
 
-    // =============================
-    // GRAFIK AKTIVITAS
-    // =============================
+        // =============================
+        // GRAFIK AKTIVITAS
+        // =============================
 
-    $queryAktivitas = $db->query("
+        $sql = "
         SELECT aktivitas, COUNT(*) AS jumlah
         FROM tbl_melihat
+        WHERE 1=1
+        ";
+
+        if (!empty($tgl_awal_history) && !empty($tgl_akhir_history)) {
+            $sql .= " AND DATE(tgl_history) BETWEEN '$tgl_awal_history' AND '$tgl_akhir_history'";
+        }
+
+        $sql .= "
         GROUP BY aktivitas
         ORDER BY jumlah DESC
-    ");
+        ";
 
-    $resultAktivitas = $queryAktivitas->getResultArray();
+        $queryAktivitas = $db->query($sql);
+        $resultAktivitas = $queryAktivitas->getResultArray();
 
-    $label_aktivitas = [];
-    $data_aktivitas = [];
+        $label_aktivitas = [];
+        $data_aktivitas = [];
 
-    foreach ($resultAktivitas as $row) {
-        $label_aktivitas[] = $row['aktivitas'];
-        $data_aktivitas[] = (int)$row['jumlah'];
-    }
+        foreach ($resultAktivitas as $row) {
+            $label_aktivitas[] = $row['aktivitas'];
+            $data_aktivitas[] = (int) $row['jumlah'];
+        }
 
         // =============================
         // KIRIM KE VIEW
@@ -142,6 +151,9 @@ class Admin extends BaseController
 
             'label_aktivitas' => json_encode($label_aktivitas),
             'data_aktivitas' => json_encode($data_aktivitas),
+
+            'tgl_awal_history' => $tgl_awal_history,
+            'tgl_akhir_history' => $tgl_akhir_history,
 
 
         ];
